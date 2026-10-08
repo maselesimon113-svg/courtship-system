@@ -45,7 +45,7 @@ with app.app_context():
 
 # Helper function to send email
 def send_email(to_email, subject, body):
-    sender_email = "subalosimon26@gmail.com"
+    sender_email = "maselesimon113@gmail.com"
     sender_password = "your_app_password"  # Weka App Password yako hapa
     
     msg = MIMEText(body)

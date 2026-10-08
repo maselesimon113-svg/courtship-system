@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>User Dashboard</h2>
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Registered Men</h5>
+                <p class="card-text fs-3">{{ men_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-white bg-pink bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Registered Women</h5>
+                <p class="card-text fs-3">{{ women_count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="mt-4">Select a Partner to Request Pairing</h3>
+<form action="{{ url_for('dashboard') }}" method="POST">
+    <div class="mb-3">
+        <label>Available Partners</label>
+        <select name="selected_partner_id" class="form-select" required>
+            {% for partner in partners %}
+                <option value="{{ partner.id }}">{{ partner.full_name }} (Age: {{ partner.age }}, Location: {{ partner.location }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Choice to Admin</button>
+</form>
+<a href="{{ url_for('logout') }}" class="btn btn-secondary mt-3">Logout</a>
+{% endblock %}
